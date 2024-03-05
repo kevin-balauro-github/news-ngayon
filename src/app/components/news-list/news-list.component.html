@@ -1,0 +1,19 @@
+<div *ngIf="news$ | async as newsData">
+  <ul class="news-container" *ngIf="newsData.data.length > 0; else noNews">
+    <li class="news-detail" *ngFor="let news of newsData.data">
+      <h3 class="news-title">{{ news["title"] }}</h3>
+      <h5 class="news-source">{{ news["source"] }}</h5>
+      <p class="news-published">
+        {{ news["published_at"] | date : "shortDate" }}
+      </p>
+      <p class="news-description">
+        {{ news["description"] | slice : 0 : 300 }} ..
+      </p>
+
+      <a class="news-url" [href]="news['url']" target="”_blank”">Read More</a>
+    </li>
+  </ul>
+</div>
+<ng-template #noNews>
+  <h1>No News Found</h1>
+</ng-template>

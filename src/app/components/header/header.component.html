@@ -1,0 +1,17 @@
+<header>
+  <div class="logo-container">
+    <img src="../assets/img/favicon.png" alt="Logo" />
+    <h1>
+      <a [routerLink]="['/news', 'general']">{{ title }}</a>
+    </h1>
+  </div>
+  <div class="search-container">
+    <input type="text" placeholder="" #word />
+    <button
+      type="button"
+      (click)="getNewsWithKeyword(word.value); word.value = ''"
+    >
+      <span>Search</span>
+    </button>
+  </div>
+</header>
